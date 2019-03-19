@@ -1,14 +1,11 @@
 const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = merge(common, {
-    mode: 'development',        
+    mode: 'production',    
     devtool: 'source-map',
-    devServer: {
-        contentBase: './dist',        
-    },
     module: {
         rules: [
             {
@@ -57,7 +54,9 @@ module.exports = merge(common, {
     },
     optimization: {
         minimizer: [
-            new UglifyJsPlugin()
+            new UglifyJsPlugin({
+                sourceMap: true    // uglify 會把source map 拿掉，要source map 的話，要再設定
+            })
         ]
     },
     plugins: [],

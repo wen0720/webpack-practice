@@ -32,7 +32,7 @@ module.exports = {
  * 通常會分為2種資料夾，source 和 distribution，
  * 分別放[原始碼]與要[發佈]的檔案
  * 
- * 除了 import export 之外， webpack 預設不會轉譯任何程式，
+ * 除了 js 的 import export 語法之外， webpack 預設不會轉譯任何程式，
  * 所以如果需要相容瀏覽器，要使用 babel
  * 
  */
@@ -82,7 +82,24 @@ module.exports = {
   * 
   */
 
+  /**
+   * webpack-dev-server 
+   * 
+   * 執行 webpack-dev-server --open ，預設會執行 webpack.config.js 裡的設定，
+   * 就可以達成 hot Reload 。 
+   * 紀錄一下踩雷心情，我還不知道能不能改預設執行 webpack.config.js 的方法，
+   * 但曾經因為我主要執行的檔案名是 webpacl.config.dev.js，
+   * 而導致一直發生錯誤，= =
+   * 
+   */
 
+
+   /**
+    * definePlugin
+    * 
+    * webpack 並不鼓勵直接使用 node.js 裡的 process.env.NODE_ENV 參數
+    * 
+    */
 
   /////===============//////
 

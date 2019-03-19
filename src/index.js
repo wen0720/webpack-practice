@@ -8,3 +8,5 @@ console.log('[image 路徑]', image) // 就是 lesson01.png 被打包出來的�
 console.log('[css 路徑]', url)
 
 print()
+
+console.log(process.env.NODE_ENV)
