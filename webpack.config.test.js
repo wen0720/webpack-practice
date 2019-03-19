@@ -10,7 +10,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.txt$/,  // 什麼樣的檔案是想要轉換的
+                test: /\.txt$/,  // 什麼樣的檔案是想要轉換的(正規表達式)
                 // use: 'raw-loader' // 使用什麼 loader
                 use: [
                     { loader: ['style-loader'](/loaders/style-loader) },
@@ -26,10 +26,31 @@ module.exports = {
     }
 }
 
+/**
+ * webpack guide
+ * 
+ * 通常會分為2種資料夾，source 和 distribution，
+ * 分別放[原始碼]與要[發佈]的檔案
+ * 
+ * 除了 import export 之外， webpack 預設不會轉譯任何程式，
+ * 所以如果需要相容瀏覽器，要使用 babel
+ * 
+ */
+
+/**
+ * webpack configuration
+ * 
+ * webpack 並不一定要求一定要有 config file ，但若沒有， webpack 會假設你的 entry point 為 src/index.js
+ * 並且輸出壓縮至 dist/main.js 預設為 production 模式。
+ */
+
 
 
 /***
  * webpack loader
+ * 
+ * 是為了處理 import 進 js 檔案
+ * 
  * loader 是一個轉換器，我們透過 module 將其引入。也可以用 import 的方式。
  * 在其他包版工具，loader 就像 task 一樣。他可以將 typescript 轉為 js，或是將 image 轉為 data url 等。
  * 甚至允許你從 js module 中，引入 css files
@@ -55,7 +76,21 @@ module.exports = {
 
  /**
   * output
+  * 
   * 控制如何將文件寫入硬碟，
   * 雖然可以有多個 entry point，但是 output 只能有一個。
   * 
   */
+
+
+
+  /////===============//////
+
+  /**
+   * 試著去編譯 sass 檔案的心得
+   * 
+   * 用sass-loader => css-loader => style-loader
+   * 最後載入 css 這段，也會被寫在bundle.js 裡，
+   * 在 liveLoad的時候，以 <style> 標籤的方式，被寫進html
+   * 
+   */
