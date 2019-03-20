@@ -57,7 +57,10 @@ module.exports = merge(common, {
             new UglifyJsPlugin({
                 sourceMap: true    // uglify 會把source map 拿掉，要source map 的話，要再設定
             })
-        ]
+        ],
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     plugins: [],
     resolve: {
